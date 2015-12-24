@@ -40,7 +40,6 @@ def search_tweets(query):
         LOKLAK_API_URL + 'search.json',
         params={'q': query}
     )
-    print(response.text)
     tweets = json.loads(response.text)['statuses']
     tweets_texts = []
     for tweet in tweets:
@@ -50,13 +49,14 @@ def search_tweets(query):
 last_movies = get_last_movies()
 print('Choose one of last movies and print it number.')
 for i in range(len(last_movies)):
-    print(i, last_movies[i])
+    print('{}: {}'.format(i, last_movies[i]))
 
-movie_number = input('Movie number: ')
-if not movie_number.isdigit():
-    print('Movie number should be digit')
+try:
+    movie_number = int(input('Movie number: '))
+except ValueError:
+    print('Movie number should be digit.')
     exit()
-movie_number = int(movie_number)
+
 if not movie_number >= 0 or not movie_number <= len(last_movies):
     print('Choose correct number.')
     exit()
