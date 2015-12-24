@@ -63,4 +63,4 @@ if not movie_number >= 0 or not movie_number <= len(last_movies):
 
 print('OK, loading tweets from Loklak about this movie')
 tweets = search_tweets(last_movies[movie_number])
-print('\n'.join(tweets))
+print('\n\n'.join(tweets))
